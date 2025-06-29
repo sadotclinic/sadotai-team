@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SadotAi Team</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .chat-box {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .response {
+            margin-top: 20px;
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .red-flag {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function getResponse() {
+            const input = document.getElementById('question').value;
+            const responseBox = document.getElementById('response');
+            let response = '';
+
+            if (input.includes('ירך') && input.includes('הקרנה')) {
+                response = 'נשמע כמו מעורבות עצבית אפשרית – שקול בדיקה של עצב הסיאטיק או מקור לומברי. <span class="red-flag">דגל אדום: אם יש חולשה או ירידה בתחושה – שלח לרופא.</span>';
+            } else if (input.includes('גלוטאוס')) {
+                response = 'הגלוטאוס מדיוס אחראי לייצוב האגן בהליכה – אל תזלזל בו 💪';
+            } else if (input.trim() === '') {
+                response = 'כתוב שאלה כדי לקבל תשובה 🙃';
+            } else {
+                response = 'תודה! SadotAi בודק... נראה תקין, אך אם יש ספק – תמיד כדאי להתייעץ קלינית.';
+            }
+
+            responseBox.innerHTML = response;
+        }
+    </script>
+</head>
+<body>
+    <div class="chat-box">
+        <h1>SadotAi Team 🤖</h1>
+        <p>שלום צוות יקר! תשאלו שאלה קלינית ו-SadotAi ינסה לעזור 👇</p>
+        <input type="text" id="question" placeholder="הקלידו שאלה כאן..." onkeydown="if(event.key==='Enter') getResponse()">
+        <div id="response" class="response"></div>
+    </div>
+</body>
+</html>
